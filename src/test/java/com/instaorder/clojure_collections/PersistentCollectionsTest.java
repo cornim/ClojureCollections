@@ -32,9 +32,13 @@ public class PersistentCollectionsTest {
 		
 		assertTrue(target.equiv(target2));
 		
+		target = target.remove(1);
+		assertEquals(1, target.count());
+		assertEquals(new Integer(5), target.peek());
+		
 		target = target.empty();
 		
-		assertEquals(0, target.count());		
+		assertEquals(0, target.count());
 	}
 	
 	@Test
@@ -76,5 +80,19 @@ public class PersistentCollectionsTest {
 		IPersistentVector<Integer> target3 = new PersistentVector<>(3, 56, 55, 8);
 		
 		assertTrue(target2.equiv(target3));
+		
+		target = target.cons(-9);
+		target = target.subVec(2, 4);
+		assertEquals(2, target.count());
+		assertEquals(new Integer(10), target.nth(0));
+		assertEquals(new Integer(-9), target.nth(1));
+		
+		target = target.remove(10);
+		assertEquals(1, target.count());
+		assertEquals(new Integer(-9), target.peek());
+		
+		target = target.empty();
+		
+		assertEquals(0, target.count());
 	}
 }

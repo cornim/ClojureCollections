@@ -1,9 +1,12 @@
 package com.instaorder.clojure_collections;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import clojure.lang.IMapEntry;
+import clojure.lang.RT;
+import clojure.lang.SeqIterator;
 
 public class PersistentVector<T> implements IPersistentVector<T> {
 	private final clojure.lang.IPersistentVector _clojureVector;
@@ -104,5 +107,25 @@ public class PersistentVector<T> implements IPersistentVector<T> {
 		return notFound;
 	}
 
+	@Override
+	public IPersistentVector<T> subVec(int start, int end) {
+		return new PersistentVector<T>(RT.subvec(_clojureVector, start, end));
+	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public Iterator<T> iterator() {
+		return new SeqIterator(_clojureVector.seq());
+	}
+
+	@Override
+	public IPersistentVector<T> remove(T item) {
+		IPersistentVector<T> ret = new PersistentVector<T>();
+		for (T t : this) {
+			if (!t.equals(item)){
+				ret = ret.cons(t);
+			}
+		}
+		return ret;
+	}
 }

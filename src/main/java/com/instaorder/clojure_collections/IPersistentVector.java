@@ -2,7 +2,7 @@ package com.instaorder.clojure_collections;
 
 import clojure.lang.IMapEntry;
 
-public interface IPersistentVector<T> {
+public interface IPersistentVector<T> extends Iterable<T> {
 	int count();
 
 	IPersistentVector<T> empty();
@@ -30,4 +30,8 @@ public interface IPersistentVector<T> {
 	T valAt(Integer key);
 
 	T valAt(Integer key, T notFound);
+	
+	IPersistentVector<T> subVec(int start, int end);
+	
+	IPersistentVector<T> remove(T item);
 }

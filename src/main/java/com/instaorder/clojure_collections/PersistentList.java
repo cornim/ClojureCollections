@@ -1,7 +1,10 @@
 package com.instaorder.clojure_collections;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+
+import clojure.lang.SeqIterator;
 
 public class PersistentList<T> implements IPersistentList<T> {
 	
@@ -55,4 +58,20 @@ public class PersistentList<T> implements IPersistentList<T> {
 		return new PersistentList<T>((clojure.lang.IPersistentList) _clojureList.pop());
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public Iterator<T> iterator() {
+		return new SeqIterator(_clojureList.seq());
+	}
+
+	@Override
+	public IPersistentList<T> remove(T item) {
+		IPersistentList<T> ret = new PersistentList<T>();
+		for (T t : this) {
+			if (!t.equals(item)){
+				ret = ret.cons(t);
+			}
+		}
+		return ret;
+	}
 }

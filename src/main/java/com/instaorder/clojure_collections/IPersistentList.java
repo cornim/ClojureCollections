@@ -1,6 +1,6 @@
 package com.instaorder.clojure_collections;
 
-public interface IPersistentList<T> {
+public interface IPersistentList<T> extends Iterable<T> {
 	int count();
 
 	IPersistentList<T> cons(Object o);
@@ -12,4 +12,6 @@ public interface IPersistentList<T> {
 	T peek();
 
 	IPersistentList<T> pop();
+	
+	IPersistentList<T> remove(T item);
 }
