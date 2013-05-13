@@ -174,6 +174,7 @@ public class PersistentCollectionsTest {
 		assertTrue(target.equiv(target2));
 		
 		target2 = target2.without("z");
+		target2 = target2.without("b");
 		
 		assertFalse(target.equiv(target2));
 	}

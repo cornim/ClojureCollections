@@ -29,7 +29,7 @@ public class PersistentHashMap<K, V> implements IPersistentMap<K, V> {
 	}
 
 	@Override
-	public IPersistentMap<K, V> cons(MapEntry entry) {
+	public IPersistentMap<K, V> cons(IMapEntry entry) {
 		return new PersistentHashMap<K,V>((clojure.lang.IPersistentMap) _clojureMap.cons(entry));
 	}
 
