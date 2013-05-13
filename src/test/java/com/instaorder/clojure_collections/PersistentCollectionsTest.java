@@ -158,6 +158,20 @@ public class PersistentCollectionsTest {
 				
 		target = target.empty();
 		
-		assertEquals(0, target.count());		
+		assertEquals(0, target.count());
+		
+		target = target.assoc("x", "y");
+		target = target.assoc("z", "a");
+		
+		IPersistentMap<String, String> target2 = new PersistentHashMap<String, String>();
+		
+		target2 = target2.assoc("x", "y");
+		target2 = target2.assoc("z", "a");
+		
+		assertTrue(target.equiv(target2));
+		
+		target2 = target2.without("z");
+		
+		assertFalse(target.equiv(target2));
 	}
 }
