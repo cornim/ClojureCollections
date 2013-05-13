@@ -1,5 +1,12 @@
 package com.instaorder.clojure_collections;
 
+/**Interface for a persistent (immutable) list.
+ * All methods are guaranteed to leave the object itself unmodified and only
+ * return modified copies of the original.
+ * 
+ * @author Dr. Cornelius Mund
+ *
+ * @param <T> Type of items to be contained in the list. */
 public interface IPersistentList<T> extends Iterable<T> {
 	/**Returns the number of objects currently in the list.*/
 	int count();
