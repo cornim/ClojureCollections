@@ -2,6 +2,13 @@ package clojure_collections;
 
 import clojure.lang.IMapEntry;
 
+/**Interface for a persistent (immutable) vector.
+ * All methods are guaranteed to leave the object itself unmodified and only
+ * return modified copies of the original.
+ * 
+ * @author Dr. Cornelius Mund
+ *
+ * @param <T> Type of items to be contained in the vector. */
 public interface IPersistentVector<T> extends Iterable<T> {
 	/**Returns the number of objects currently in the vector.*/
 	int count();
@@ -25,23 +32,50 @@ public interface IPersistentVector<T> extends Iterable<T> {
 	/**Returns the number of objects currently in the vector.*/
 	int length();
 
+	/**Place a value at the i'th position in the vector thereby replacing
+	 * the value which was there before. If i was not filled before then an
+	 * IndexOutOfBoundsExceptions is thrown.
+	 * 
+	 * @param i Position where the new value should be placed.
+	 * @param val The new value
+	 * @return The new vector with the replaced value. */
 	IPersistentVector<T> assocN(int i, T val);
 
+	/**Adds an object of type T to the vector.
+	 * 
+	 * @param o Object to be added.
+	 * @return New vector with the additional object added.*/
 	IPersistentVector<T> cons(T val);
 	
-	T nth(int i);
+	/**Returns the n'th element in the list.*/
+	T nth(int n);
 	
-	boolean containsKey(Integer key);
+	/**Returns true if i is a filled element, false otherwise.*/
+	boolean containsKey(Integer i);
 
-	IMapEntry entryAt(Integer key);
+	/**Returns the the value at a given position together with the number of
+	 * the position.
+	 * 
+	 * @param i Number of the position to retrieve.
+	 * @return A MapEntry consisting of the the position i as key and the value
+	 * at position i as val. */
+	IMapEntry entryAt(Integer i);
 
-	IPersistentVector<T> assoc(Integer key, T val);
+	/**Returns the object at position i.
+	 * 
+	 * @see nth	*/
+	T valAt(Integer i);
 
-	T valAt(Integer key);
-
-	T valAt(Integer key, T notFound);
+	/**Returns the object at position i or notFound if i is out of bounds.*/
+	T valAt(Integer i, T notFound);
 	
+	/**Returns a subvector of the current vector starting at start (inclusive)
+	 * and ending at end (exclusive). */
 	IPersistentVector<T> subVec(int start, int end);
 	
+	/**Returns the vector without item. If item is not in the vector 
+	 * a copy of the entire vector is returned.
+	 * 
+	 * @param item Item which is filtered from the vector.*/
 	IPersistentVector<T> without(T item);
 }

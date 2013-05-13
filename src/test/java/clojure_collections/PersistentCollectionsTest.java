@@ -70,13 +70,16 @@ public class PersistentCollectionsTest {
 		assertEquals(3, target.count());
 		assertEquals(new Integer(10), target.peek());
 		
-		target = target.assocN(1, 7);
-		assertEquals(3, target.count());
-		assertEquals(new Integer(7), target.nth(1));
-		
-		target = target.assoc(1, 9);
+		target = target.assocN(1, 9);
 		assertEquals(3, target.count());
 		assertEquals(new Integer(9), target.nth(1));
+		
+		try{
+			target = target.assocN(15, 8);
+			fail();
+		}catch (Exception e){
+			//Expected exception
+		}
 		
 		IPersistentVector<Integer> target2 = new PersistentVector<>(3, 56, 55, 8);
 		IPersistentVector<Integer> target3 = new PersistentVector<>(3, 56, 55, 8);

@@ -74,8 +74,8 @@ public class PersistentVector<T> implements IPersistentVector<T> {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public T nth(int i) {
-		return (T) _clojureVector.nth(i);
+	public T nth(int n) {
+		return (T) _clojureVector.nth(n);
 	}
 
 	@Override
@@ -86,11 +86,6 @@ public class PersistentVector<T> implements IPersistentVector<T> {
 	@Override
 	public IMapEntry entryAt(Integer key) {
 		return _clojureVector.entryAt(key);
-	}
-
-	@Override
-	public IPersistentVector<T> assoc(Integer key, T val) {
-		return new PersistentVector<T>((clojure.lang.IPersistentVector) _clojureVector.assoc(key, val));
 	}
 
 	@SuppressWarnings("unchecked")
