@@ -11,9 +11,6 @@
 
 package clojure_collections;
 
-import clojure.lang.IMapEntry;
-import clojure.lang.MapEntry;
-
 /**Interface for a persistent (immutable) map.
  * All methods are guaranteed to leave the object itself unmodified and only
  * return modified copies of the original.
@@ -23,7 +20,7 @@ import clojure.lang.MapEntry;
  * @param <K> Key type
  * @param <V> Value type
  */
-public interface IPersistentMap<K, V> extends Iterable<MapEntry>{
+public interface IPersistentMap<K, V> extends Iterable<IMapEntry<K,V>>{
 	/**Returns the number of objects currently in the map.*/
 	int count();
 	
@@ -32,7 +29,7 @@ public interface IPersistentMap<K, V> extends Iterable<MapEntry>{
 	 * 
 	 * @param entry MapEntry to be added to the map.
 	 * @return New map with the additional MapEntry added.*/
-	IPersistentMap<K, V> cons(IMapEntry entry);
+	IPersistentMap<K, V> cons(IMapEntry<K,V> entry);
 	
 	/**Returns the map with all elements removed.*/
 	IPersistentMap<K, V> empty();
@@ -49,7 +46,7 @@ public interface IPersistentMap<K, V> extends Iterable<MapEntry>{
 	boolean contiansKey(K key);
 	
 	/**Returns the map entry for key or null if key is not found in the map.*/
-	IMapEntry entryAt(K key);
+	IMapEntry<K,V> entryAt(K key);
 	
 	/**Returns the value for key or null if key is not found in the map.*/
 	V valAt(K key);

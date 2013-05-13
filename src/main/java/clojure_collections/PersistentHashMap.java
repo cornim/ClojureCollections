@@ -15,8 +15,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import clojure.lang.IMapEntry;
-import clojure.lang.MapEntry;
 import clojure.lang.SeqIterator;
 
 public class PersistentHashMap<K, V> implements IPersistentMap<K, V> {
@@ -40,8 +38,9 @@ public class PersistentHashMap<K, V> implements IPersistentMap<K, V> {
 	}
 
 	@Override
-	public IPersistentMap<K, V> cons(IMapEntry entry) {
-		return new PersistentHashMap<K,V>((clojure.lang.IPersistentMap) _clojureMap.cons(entry));
+	public IPersistentMap<K, V> cons(IMapEntry<K,V> entry) {
+		return new PersistentHashMap<K,V>((clojure.lang.IPersistentMap)
+				_clojureMap.cons(new clojure.lang.MapEntry(entry.key(), entry.val())));
 	}
 
 	@Override
@@ -65,8 +64,12 @@ public class PersistentHashMap<K, V> implements IPersistentMap<K, V> {
 	}
 
 	@Override
-	public IMapEntry entryAt(K key) {
-		return _clojureMap.entryAt(key);
+	public IMapEntry<K,V> entryAt(K key) {
+		clojure.lang.IMapEntry clojureMapEntry = _clojureMap.entryAt(key);
+		if (clojureMapEntry != null){
+			return new MapEntry<K,V>(clojureMapEntry);
+		}
+		return null;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -101,8 +104,32 @@ public class PersistentHashMap<K, V> implements IPersistentMap<K, V> {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public Iterator<MapEntry> iterator() {
-		return new SeqIterator(_clojureMap.seq());
+	public Iterator<IMapEntry<K,V>> iterator() {
+		return new MapEntryIterator(new SeqIterator(_clojureMap.seq()));
+	}
+	
+	private class MapEntryIterator implements Iterator<IMapEntry<K,V>>{
+		private final Iterator<clojure.lang.MapEntry> _mapEntryIterator;
+		
+		public MapEntryIterator(Iterator<clojure.lang.MapEntry> mapEntryIterator) {
+			_mapEntryIterator = mapEntryIterator;
+		}
+
+		@Override
+		public boolean hasNext() {
+			return _mapEntryIterator.hasNext();
+		}
+
+		@Override
+		public MapEntry<K, V> next() {
+			return new MapEntry<>(_mapEntryIterator.next());
+		}
+
+		@Override
+		public void remove() {
+			_mapEntryIterator.remove();
+		}
+		
 	}
 
 }

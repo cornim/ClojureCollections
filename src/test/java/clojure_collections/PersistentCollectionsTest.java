@@ -7,8 +7,6 @@ import java.util.List;
 
 import org.junit.Test;
 
-import clojure.lang.MapEntry;
-
 public class PersistentCollectionsTest {
 	
 	@Test
@@ -138,7 +136,7 @@ public class PersistentCollectionsTest {
 		assertEquals(3, target.count());
 		assertEquals("v4", target.valAt("k4"));
 		
-		target = target.cons(new MapEntry("k5", "v5"));
+		target = target.cons(new MapEntry<>("k5", "v5"));
 		
 		assertEquals(4, target.count());
 		assertEquals("v5", target.valAt("k5"));
@@ -153,7 +151,7 @@ public class PersistentCollectionsTest {
 		assertEquals("null", target.valAt(null));
 		assertNull(target.valAt("null"));
 		
-		for (MapEntry mapEntry : target) {
+		for (IMapEntry<String, String> mapEntry : target) {
 			if (mapEntry.key() != null && mapEntry.key().equals("null")){
 				assertNull(mapEntry.val());
 			}
