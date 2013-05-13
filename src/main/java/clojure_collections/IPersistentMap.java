@@ -1,4 +1,4 @@
-package com.instaorder.clojure_collections;
+package clojure_collections;
 
 import clojure.lang.IMapEntry;
 import clojure.lang.MapEntry;

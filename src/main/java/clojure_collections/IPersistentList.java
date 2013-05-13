@@ -1,4 +1,4 @@
-package com.instaorder.clojure_collections;
+package clojure_collections;
 
 /**Interface for a persistent (immutable) list.
  * All methods are guaranteed to leave the object itself unmodified and only

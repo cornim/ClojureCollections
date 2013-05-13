@@ -1,4 +1,4 @@
-package com.instaorder.clojure_collections;
+package clojure_collections;
 
 import java.util.ArrayList;
 import java.util.Iterator;

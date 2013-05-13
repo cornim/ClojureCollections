@@ -1,4 +1,4 @@
-package com.instaorder.clojure_collections;
+package clojure_collections;
 
 import static org.junit.Assert.*;
 
