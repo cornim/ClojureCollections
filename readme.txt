@@ -7,6 +7,12 @@
 * terms of this license.
 * You must not remove this notice, or any other, from this software.
 
+ClojureCollections offers straight forward generic wrapper classes for the
+Persistent collection types in clojure so these can be readily used in Java.
+So far, PersistentVector, PersistentMap and PersistentList have been implemented.
+
+For usage examples see the unit tests.
+
 Maven 2 build instructions:
 
   To build:  mvn package 

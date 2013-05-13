@@ -4,7 +4,7 @@
 
   <groupId>com.instaorder</groupId>
   <artifactId>clojure-collections</artifactId>
-  <version>0.1-SNAPSHOT</version>
+  <version>0.2</version>
   <packaging>jar</packaging>
 
   <name>Clojure Collections</name>
