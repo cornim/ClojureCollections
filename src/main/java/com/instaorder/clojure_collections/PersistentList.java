@@ -28,7 +28,7 @@ public class PersistentList<T> implements IPersistentList<T> {
 	}
 
 	@Override
-	public IPersistentList<T> cons(Object o) {
+	public IPersistentList<T> cons(T o) {
 		return new PersistentList<T>((clojure.lang.IPersistentList) _clojureList.cons(o));
 	}
 
