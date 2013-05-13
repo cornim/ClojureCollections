@@ -119,7 +119,7 @@ public class PersistentVector<T> implements IPersistentVector<T> {
 	}
 
 	@Override
-	public IPersistentVector<T> remove(T item) {
+	public IPersistentVector<T> without(T item) {
 		IPersistentVector<T> ret = new PersistentVector<T>();
 		for (T t : this) {
 			if (!t.equals(item)){

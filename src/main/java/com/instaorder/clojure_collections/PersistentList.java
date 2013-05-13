@@ -65,7 +65,7 @@ public class PersistentList<T> implements IPersistentList<T> {
 	}
 
 	@Override
-	public IPersistentList<T> remove(T item) {
+	public IPersistentList<T> without(T item) {
 		IPersistentList<T> ret = new PersistentList<T>();
 		for (T t : this) {
 			if (!t.equals(item)){

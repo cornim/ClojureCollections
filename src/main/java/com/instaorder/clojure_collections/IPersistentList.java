@@ -13,5 +13,5 @@ public interface IPersistentList<T> extends Iterable<T> {
 
 	IPersistentList<T> pop();
 	
-	IPersistentList<T> remove(T item);
+	IPersistentList<T> without(T item);
 }

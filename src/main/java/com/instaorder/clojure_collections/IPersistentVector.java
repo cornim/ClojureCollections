@@ -33,5 +33,5 @@ public interface IPersistentVector<T> extends Iterable<T> {
 	
 	IPersistentVector<T> subVec(int start, int end);
 	
-	IPersistentVector<T> remove(T item);
+	IPersistentVector<T> without(T item);
 }
