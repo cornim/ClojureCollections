@@ -43,7 +43,7 @@ public class PersistentCollectionsTest {
 	
 	@Test
 	public void PersistentVectorTests(){
-		IPersistentVector<Integer> target = new PersistentVector<>();
+		IPersistentVector<Integer> target = new PersistentVector<Integer>();
 		
 
 		target = target.cons(1);
@@ -79,8 +79,8 @@ public class PersistentCollectionsTest {
 			//Expected exception
 		}
 		
-		IPersistentVector<Integer> target2 = new PersistentVector<>(3, 56, 55, 8);
-		IPersistentVector<Integer> target3 = new PersistentVector<>(3, 56, 55, 8);
+		IPersistentVector<Integer> target2 = new PersistentVector<Integer>(3, 56, 55, 8);
+		IPersistentVector<Integer> target3 = new PersistentVector<Integer>(3, 56, 55, 8);
 		
 		assertTrue(target2.equiv(target3));
 		
@@ -136,7 +136,7 @@ public class PersistentCollectionsTest {
 		assertEquals(3, target.count());
 		assertEquals("v4", target.valAt("k4"));
 		
-		target = target.cons(new MapEntry<>("k5", "v5"));
+		target = target.cons(new MapEntry<String, String>("k5", "v5"));
 		
 		assertEquals(4, target.count());
 		assertEquals("v5", target.valAt("k5"));

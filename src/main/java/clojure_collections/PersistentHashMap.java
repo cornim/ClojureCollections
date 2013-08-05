@@ -122,7 +122,7 @@ public class PersistentHashMap<K, V> implements IPersistentMap<K, V> {
 
 		@Override
 		public MapEntry<K, V> next() {
-			return new MapEntry<>(_mapEntryIterator.next());
+			return new MapEntry<K, V>(_mapEntryIterator.next());
 		}
 
 		@Override
