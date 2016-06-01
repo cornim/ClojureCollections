@@ -4,7 +4,7 @@
 
   <groupId>none</groupId>
   <artifactId>clojure-collections</artifactId>
-  <version>0.2</version>
+  <version>0.2.1</version>
   <packaging>jar</packaging>
 
   <name>Clojure Collections</name>
@@ -35,13 +35,14 @@
            <version>3.1</version>
            <artifactId>maven-compiler-plugin</artifactId>
            <configuration>
-              <source>1.6</source>
-              <target>1.6</target>
+              <source>1.8</source>
+              <target>1.8</target>
            </configuration>
         </plugin>
         <plugin>
            <groupId>org.apache.maven.plugins</groupId>
            <artifactId>maven-javadoc-plugin</artifactId>
+           <version>2.10.3</version>
            <executions>
               <execution>
                  <id>attach-javadocs</id>

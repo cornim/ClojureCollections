@@ -109,8 +109,8 @@ public class PersistentCollectionsTest {
 		target = target.assoc("k4", "v4");
 		
 		assertEquals(4, target.count());
-		assertTrue(target.contiansKey("k3"));
-		assertFalse(target.contiansKey("x"));
+		assertTrue(target.containsKey("k3"));
+		assertFalse(target.containsKey("x"));
 		assertEquals("k3", target.entryAt("k3").key());
 		assertEquals("v3", target.entryAt("k3").val());
 		assertEquals("v3", target.valAt("k3"));

@@ -43,7 +43,7 @@ public interface IPersistentMap<K, V> extends Iterable<IMapEntry<K,V>>{
 	boolean equiv(IPersistentMap<K, V> map);
 	
 	/**Contains true if the map contains key as a key, false otherwise.*/
-	boolean contiansKey(K key);
+	boolean containsKey(K key);
 	
 	/**Returns the map entry for key or null if key is not found in the map.*/
 	IMapEntry<K,V> entryAt(K key);

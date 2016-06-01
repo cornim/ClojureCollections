@@ -59,7 +59,7 @@ public class PersistentHashMap<K, V> implements IPersistentMap<K, V> {
 	}
 
 	@Override
-	public boolean contiansKey(K key) {
+	public boolean containsKey(K key) {
 		return _clojureMap.containsKey(key);
 	}
 
